@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Daniel Rota 4IC Routing Statico</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Menu</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="index.html">Introduzione</a>
+                </li>
+                <li>
+                    <a href="index2.html">Routing Statico</a>
+                </li>
+                <li>
+                    <a href="index3.html">Routing Dinamico</a>
+                </li>
+                <li>
+                    <a href="index4.html">Grafi e Alberi</a>
+                </li>
+                <li>
+                    <a href="index5.html">FLSM</a>
+                </li>
+                <li>
+                    <a href="index6.html">VLSM</a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Nascondi Menu</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="fonti.html">Citografia</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <h1>Routing Statico</h1>
+            <p>Questo tipo di routing non comporta alcun cambiamento nella tabella di instradamento, a meno che l'amministratore di rete non le modifichi o le modifichi manualmente. Gli algoritmi di instradamento statico funzionano bene dove il traffico di rete è prevedibile. Questo è semplice da progettare e facile da implementare. Non sono richiesti protocolli di routing complessi.</p>
+            <p>La costruzione della tabella di routing deve avvenire sia per i percorsi fra i Router adiacenti, che per le Reti non direttamemte connesse.</p>
+            <div class="line"></div>
+            <p>Per eseguire il Routing fra Router adiacenti, prendiamo come esempio questo schema:</p>
+            <img src="IMG/routing.png">
+            <p>Il Routing deve avvenire in ordine crescente rispetto al numero dei Router, Router1 dovrà quindi spedire il proprio pacchetto verso Router2, e allo stesso tempo ricevere i messaggi da Router4 che è il suo precedente.</p>
+            <p>Prima di tutto ci servono gli indirizzi delle Reti presenti fra i diversi Router {L1, L2, L3, L4}, per faciltare il processo, prendiamo lo stesso esercizio proveniente dalla sezione <a><u><b>VLSM</b></u></a>. Ogni Rete prevede Network, Primo indirizzo, Ultimo indirizzo e Broadcast, per questi sono necessari solamente 4 indirizzi (Ovvero 2<sup>2</sup>, equivalente alla Subnet Mask 255.255.255.252 con CIDR /30).</p>
+            <div id="tabella"><div class="text-row"><div class="table-wrap"><table class="table info-table"><tbody>
+                <tr>
+                    <span>
+                    </span></td><td><span>
+                    </span></td>
+                    <span>
+                    </span></td><td><span>L1
+                    </span></td><td><span>L2
+                    </span></td><td><span>L3
+                    </span></td><td><span>L4
+                    </span></td>
+                </tr><tr>
+                        <span>
+                        </span></td><td><span>Network
+                        </span></td>
+                        <span>
+                        </span></td><td><span>172.31.169.160
+                        </span></td><td><span>172.31.169.164
+                        </span></td><td><span>172.31.169.168
+                        </span></td><td><span>172.31.169.172
+                        </span></td<td>
+                    </tr>
+                    <tr>
+                        <span>
+                        </span></td><td><span>Primo Indirizzo
+                        </span></td>
+                                    <span>
+                        </span></td><td><span>172.31.169.161
+                        </span></td><td><span>172.31.169.165
+                        </span></td><td><span>172.31.169.169
+                        </span></td><td><span>172.31.169.173
+                        </span></td>
+                    </tr>
+                    <tr>
+                        <span>
+                        </span></td><td><span>Ultimo Indirizzo
+                        </span></td>
+                                    <span>
+                        </span></td><td><span>172.31.169.162
+                        </span></td><td><span>172.31.169.166
+                        </span></td><td><span>172.31.169.170
+                        </span></td><td><span>172.31.169.174
+                        </span></td>
+                    </tr><tr>
+                        <span>
+                        </span></td><td><span>Broadcast
+                        </span></td>
+                                    <span>
+                        </span></td><td><span>172.31.169.163
+                        </span></td><td><span>172.31.169.167
+                        </span></td><td><span>172.31.169.171
+                        </span></td><td><span>172.31.169.175
+                        </span></td>
+                    </tr>
+            </table></div></div></div></tbody>
+            <p>Ottenuti gli indirizzi, non rimane altro da fare se non assegnarli, seguendo il ragionamento di prima, quindi assegnare a Router1 il primo indirizzo di L1 e l'ultimo di L4, a Router2 il primo di L2 e l'ultimo di L1 ...</p>
+            <div class="line"></div>
+            <p>Ora rimane da gestire il Routing fra Reti non direttamente connesse. Il concetto di base, sta nel permettere ad ogni Rete di comunicare con le altre nel minor tempo possibile.</p>
+            <img src="IMG/rs.png">
+            <p>R0 ad esempio dovrà comunicare con tutte le altre Reti ad eccezione di sé stessa. Lo stesso equivale per R3 ed R4, le quali comunicheranno con tutte le Reti ad eccezione di se stesse, facendo parte della stessa Network.</p>
+            <p>Sempre R0 per comunicare con R1 ed R2, dovrà passare per L1, in particolare all'ultimo indirizzo di essa, 172.31.169.162. Per comunicare con R3 ed R4, prenderà la via più semplice, ovvero L4, con l'indirizzo 172.31.169.173, il primo di questa Rete.</p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

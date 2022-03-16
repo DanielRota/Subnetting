@@ -1,0 +1,125 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"; /*Cambia il Font*/
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fff;
+}
+#sidebarCollapse { /*Bottone*/
+    background-color: #c3b0a1;
+    border: #c3b091;
+}
+p { /*I paragrafi*/
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #333;
+}
+a,
+a:hover, /*Per cambiare aspetto quando vado sul link con il mouse o viene preso*/
+a:focus { 
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+.navbar { /*Separa la sezione della citografia dalle spiegazioni*/
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /*L'ultimo e l'opacita'*/
+}
+.navbar-btn { /*Bottoni della Navbar*/
+    box-shadow: none;
+    outline: none;
+    border: none;
+}
+.line { /*Linea per separare le sezioni di spiegazione*/
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #bfaa8c;
+    margin: 40px 0;
+}
+.wrapper { /*Strecha tutto per mettere la barra laterale a sinistra*/
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+#sidebar { /*Barra*/
+    min-width: 250px;
+    max-width: 250px;
+    background: #bfaa8c;
+    color: #fff;
+    transition: all 0.3s;
+}
+#sidebar.active { 
+    margin-left: -250px;
+}
+#sidebar .sidebar-header { /*Cima della Sidebar*/
+    padding: 20px;
+    background: #a0816c;
+}
+#sidebar ul.components { /*Linea sidebar*/
+    padding: 20px 0;
+    border-bottom: 1px solid #bfaa8c;
+}
+#sidebar ul p { /*Paragrafi  e liste non ordinate*/
+    color: #fff;
+    padding: 10px;
+}
+#sidebar ul li a { /*Liste e link*/
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+#sidebar ul li a:hover { /*Ancora per il mouse*/
+    color: #a0816c;
+    background: #fff;
+}
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+    color: #fff;
+    background: #a0816c;
+}
+a[data-toggle="collapse"] {
+    position: relative;
+}
+.dropdown-toggle::after { /*Dal Nascondi menu*/
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+ul ul a { /*Liste e link*/
+    font-size: 0.9em;
+    padding-left: 30px;
+    background: #a0816c;
+}
+ul.CTAs {
+    padding: 20px;
+}
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+#content { /*Contenuto pagina*/
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #sidebarCollapse span {
+        display: none;
+    }
+}

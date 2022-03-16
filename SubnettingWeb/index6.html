@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Daniel Rota 4IC VLSM</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Menu</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="index.html">Introduzione</a>
+                </li>
+                <li>
+                    <a href="index2.html">Routing Statico</a>
+                </li>
+                <li>
+                    <a href="index3.html">Routing Dinamico</a>
+                </li>
+                <li>
+                    <a href="index4.html">Grafi e Alberi</a>
+                </li>
+                <li>
+                    <a href="index5.html">FLSM</a>
+                </li>
+                <li>
+                    <a href="index6.html">VLSM</a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Nascondi Menu</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="fonti.html">Citografia</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <h1>Variable Lenght Subnet Mask</h1>
+            <p>Il VLSM rappresenta la tipologia di Subnetting più efficace, in grado di garantire il minor spreco di Host possibili. Questa sua affidabilità è data dal fatto di far uso di una Subnet Mask a Lunghezza Variabile; essa cambia infatti dinamicamente, in base al numero di host destinati ad una specifica sottorete della Rete principale.</p>
+            <p>Per considerare tutte le diverse casistiche che possono intercorrere durante il processo di calcolo, verrà utilizzato l'indirizzo 172.31.0.0 di classe B (Lo stesso utilizzato nella sezione <a href="index5.html"><u><b>VLSM</b></u></a>, in modo da mostrare la differenza fra le due tecniche).</p>
+
+            <div class="line"></div>
+
+            <p>In prima istanza ci viene assegnata una tabella contenente il numero di sottoreti da gestire, con il numero di host da assegnare ad ognuna di esse.</p>
+
+            <p>Ogni sottorete oltre che agli Host, presenta però un indirizzo di Rete, Gateway e Broadcast, è quindi necessario sommare 3 ad ognuno dei dati ricevuti.</p>
+
+            <div id="tabella"><div class="text-row"><div class="table-wrap"><table class="table info-table"><tbody>
+                <tr><td><span></span>
+                    <span>R0
+                    </span></td><td><span>R1
+                    </span></td><td><span>R2
+                    </span></td><td><span>R3
+                    </span></td><td><span>R4
+                    </span></td><td><span>R5
+                    </span></td><td><span>R6
+                    </span></td><td><tr>
+                        <span>
+                        </span></td><td><span>29243 + 3
+                        </span></td><td><span>1392 + 3
+                        </span></td><td><span>50 + 3
+                        </span></td><td><span>61 + 3
+                        </span></td><td><span>166 + 3
+                        </span></td><td><span>4674 + 3
+                        </span></td><td><span>26 + 3
+                        </span></td><td>
+                    </tr>
+            </table></div></div></div></tbody>
+
+                
+            <div class="line"></div>
+
+            <p>Uno dei modi più veloci per giungere alla soluzione, è quello di calcolare subito il <b>CIDR</b>> di ogni sottorete.</p>
+            <p>Per trovare questo è necessario prima essere in possesso del numero di Bit destinati agli Host di ogni sottorete, e per calcolarlo è sufficente eseguire il <b>Logaritmo in base 2</b> del numero totale di indirizzi (Dopo essersi opportunamente ricordati di sommare 3 ad ogni gruppo di Host assegnatoci).</p>
+            <p>Fatto ciò, non è necessario altro se non sottrarre il numero di Bit per gli Host alla lunghezza totale degli indirizzi (32 Bit).</p>
+        
+            <div id="tabella"><div class="text-row"><div class="table-wrap"><table class="table info-table"><tbody>
+                <tr>
+                    <span>
+                    </span></td><td><span>
+                    </span></td>
+                    <span>
+                    </span></td><td><span>R0
+                    </span></td><td><span>R1
+                    </span></td><td><span>R1
+                    </span></td><td><span>R3
+                    </span></td><td><span>R4
+                    </span></td><td><span>R5
+                    </span></td><td><span>R6
+                    </span></td><td>
+                </tr><tr>
+                        <span>
+                        </span></td><td><span>Bit Host
+                        </span></td>
+                        <span>
+                        </span></td><td><span>15
+                        </span></td><td><span>11
+                        </span></td><td><span>6
+                        </span></td><td><span>6
+                        </span></td><td><span>8
+                        </span></td><td><span>13
+                        </span></td><td><span>5
+                        </span></td><td>
+                    </tr>
+                    <tr>
+                        <span>
+                        </span></td><td><span>CIDR
+                        </span></td>
+                                    <span>
+                        </span></td><td><span>17
+                        </span></td><td><span>21
+                        </span></td><td><span>28
+                        </span></td><td><span>28
+                        </span></td><td><span>24
+                        </span></td><td><span>19
+                        </span></td><td><span>27
+                        </span></td><td>
+                    </tr>
+            </table></div></div></div></tbody>
+            <div class="line"></div>
+
+            <p>Calcolati i CIDR, è necessario convertire questi in decimale ottenendo le <b>Subnet Mask</b>, ricordiamo quindi che esso rappresenta una serie di 1 contigui pari al numero del CIDR stesso, separati ogni 8 cifre da un punto.</p>
+            <div id="tabella"><div class="text-row"><div class="table-wrap"><table class="table info-table"><tbody>
+                <tr>
+                    <span>
+                    </span></td><td><span>
+                    </span></td>
+                    <span>
+                    </span></td><td><span>R0
+                    </span></td><td><span>R1
+                    </span></td><td><span>R2
+                    </span></td><td><span>R3
+                    </span></td><td><span>R4
+                    </span></td><td><span>R5
+                    </span></td><td><span>R6
+                    </span></td><td>
+                </tr><tr>
+                        <span>
+                        </span></td><td><span>Subnet Mask
+                        </span></td>
+                        <span>
+                        </span></td><td><span>255.255.128.0
+                        </span></td><td><span>255.255.248.0
+                        </span></td><td><span>255.255.255.192
+                        </span></td><td><span>255.255.255.192
+                        </span></td><td><span>255.255.255.0
+                        </span></td><td><span>255.255.224.0
+                        </span></td><td><span>255.255.255.224
+                        </span></td><td>
+                    </tr>
+            </table></div></div></div></tbody>
+
+            <div class="line"></div>
+
+            <p>Dopo aver calcolato CIDR, Subnet Mask e Bit destinati agli Host, non ci resta che ottenere tutti i rispettivi indirizzi di Rete di ogni Subnet.</p>
+            <p>Per questoni di comodità è utile riorganizzare in modo decrescente le sottoreti in base al numero di indirizzi totali.</p>
+
+            <div id="tabella"><div class="text-row"><div class="table-wrap"><table class="table info-table"><tbody>
+                <tr><td><span></span>
+                    <span>R0
+                    </span></td><td><span>R5
+                    </span></td><td><span>R1
+                    </span></td><td><span>R4
+                    </span></td><td><span>R3
+                    </span></td><td><span>R2
+                    </span></td><td><span>R6
+                    </span></td><td><tr>
+                        <span>
+                        </span></td><td><span>29246
+                        </span></td><td><span>4677
+                        </span></td><td><span>1395
+                        </span></td><td><span>169
+                        </span></td><td><span>64
+                        </span></td><td><span>53
+                        </span></td><td><span>29
+                        </span></td><td>
+                    </tr>
+            </table></div></div></div></tbody>
+
+            <div class="line"></div>
+
+            <p>Per assegnare ogni indirizzo si procede a cascata, assegnando via via un Range di indirizzi utilizzabili dalle subnet sempre più piccolo.</p>
+            <p>La prima sottorete R0, nonché la piu grande, non può che ottenere come indirizzo assegnato quello <b>principale</b>, 172.31.0.0 da cui si dirameranno tutte le altre Subnet.</p>
+
+            <div id="tabella"><div class="text-row"><div class="table-wrap"><table class="table info-table"><tbody>
+                <tr><td><span></span>
+                    <span>R0
+                    </span></td><tr>
+                        <span>
+                        </span></td><td><span>172.31.0.0
+                        </span></td>
+                    </tr>
+            </table></div></div></div></tbody>
+
+            <p>Tenendo conto di questo indirizzo come indirizzo di partenza, dobbiamo ripescare la lista dei CIDR, prendendo proprio quello di R0. Il valore del CIDR di R0 è 17, ciò sta ad indicare che è necessario modificare il 17' Bit dell'indirizzo di Rete di R0 in formato binario, per ottenere l'indirizzo successivo, quello di R5.</p>
+
+            <div id="tabella"><div class="text-row"><div class="table-wrap"><table class="table info-table"><tbody>
+                <tr><td><span></span>
+                    <span>R0
+                    </span></td>
+                    <td><span></span>
+                        <span>R5
+                        </span></td><tr>
+                        <span>
+                        </span></td><td><span>172.31.0.0
+                        </span></td><td><span>172.31.128.0
+                        </span></td>
+                    </tr>
+            </table></div></div></div></tbody>
+
+            <p>Compreso il meccanismo, per ottenere il Network di R1 è necessario "Attivare" il 19' Bit (CIDR di R5: 19), per R4 il 21' ...</p>
+            <p>Il risultato finale con tutte le Reti è mostrato nella tabella seguente.
+
+            </p>
+            <div id="tabella"><div class="text-row"><div class="table-wrap"><table class="table info-table"><tbody>
+                <tr><td><span></span>
+                    <span>R0
+                    </span></td><td><span>R5
+                    </span></td><td><span>R1
+                    </span></td><td><span>R4
+                    </span></td><td><span>R3
+                    </span></td><td><span>R2
+                    </span></td><td><span>R6
+                    </span></td><td><tr>
+                        <span>
+                        </span></td><td><span>172.31.0.0
+                        </span></td><td><span>172.31.128.0
+                        </span></td><td><span>172.31.160.0
+                        </span></td><td><span>172.31.168.0
+                        </span></td><td><span>172.31.169.0
+                        </span></td><td><span>172.31.169.64
+                        </span></td><td><span>172.31.169.128
+                        </span></td><td>
+                    </tr>
+            </table></div></div></div></tbody>
+
+            <div class="line"></div>
+
+            <p>Vi sono infine Default Gateway e Broadcast, che come detto in precedenza sono rispettivamente penultimo ed ultimo indirizzo della Rete. Per essere calcolati basta quindi sottrarre 1 al Network della sottorete successiva, per ottenere il Broadcast, e 2 per ottenere il Gateway.            </p>
+
+            <div id="tabella"><div class="text-row"><div class="table-wrap"><table class="table info-table"><tbody>
+                <tr>
+                    <span>
+                    </span></td><td><span>
+                    </span></td>
+                    <span>
+                    </span></td><td><span>R0
+                    </span></td><td><span>R5
+                    </span></td><td><span>R1
+                    </span></td><td><span>R4
+                    </span></td><td><span>R3
+                    </span></td><td><span>R2
+                    </span></td><td><span>R6
+                    </span></td><td>
+                </tr><tr>
+                        <span>
+                        </span></td><td><span>Default Gateway
+                        </span></td>
+                        <span>
+                        </span></td><td><span>172.31.127.254
+                        </span></td><td><span>172.31.159.254
+                        </span></td><td><span>172.31.167.254
+                        </span></td><td><span>172.31.168.254
+                        </span></td><td><span>172.31.169.62
+                        </span></td><td><span>172.31.169.122
+                        </span></td><td><span>172.31.169.158
+                        </span></td><td>
+                    </tr>
+                    <tr>
+                        <span>
+                        </span></td><td><span>Broadcast
+                        </span></td>
+                                    <span>
+                        </span></td><td><span>172.31.127.255
+                        </span></td><td><span>172.31.159.255
+                        </span></td><td><span>172.31.167.255
+                        </span></td><td><span>172.31.168.255
+                        </span></td><td><span>172.31.169.63
+                        </span></td><td><span>172.31.169.123
+                        </span></td><td><span>172.31.169.159
+                        </span></td><td>
+                    </tr>
+            </table></div></div></div></tbody>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Daniel Rota 4IC Grafi e Alberi</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Menu</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="index.html">Introduzione</a>
+                </li>
+                <li>
+                    <a href="index2.html">Routing Statico</a>
+                </li>
+                <li>
+                    <a href="index3.html">Routing Dinamico</a>
+                </li>
+                <li>
+                    <a href="index4.html">Grafi e Alberi</a>
+                </li>
+                <li>
+                    <a href="index5.html">FLSM</a>
+                </li>
+                <li>
+                    <a href="index6.html">VLSM</a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Nascondi Menu</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="fonti.html">Citografia</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <h1>Grafi</h1>
+            <p>Un Grafo è una relazione che lega un numero finito di <b>Vertici V</b> e un numero finito di <b>Archi E</b>, i quali sono i segmenti che collegano i vertici. La notazione utilizzata per esprimere l'insieme dei vertici è G(V) mentre quella per i nodi G(E). Ecco un esempio:</p>
+            <img src="IMG/nonorientato.png">
+            <div class="line"></div>
+            
+            <p>Per introdurre questo sistema nel mondo dell'Instradamento è necessario prima suddividere alcune tipologie di grafo, partendo da quelli riguardanti il concetto di <b>Direzionalità</b>.</p>
+            <p><b>Grafo non Orientato</b>: Non esiste una direzionalità, le informazioni possono viaggiare da un vertice all'altro liberatamente (Come nell'esempio sovrastante).</p>
+            <p><b>Grafo Orientato</b>: I messaggi sono costretti a rispettare una determinata direzionalità durante il loro traffico (Un vertice avente nodo rivolto a sé stesso è detto <b>Cappio</b>).</p>
+            <img src="IMG/orientato.png">
+            <div class="line"></div>
+            <p>Esiste poi il <b>Grafo Pesato</b>, qui ogni nodo percorribile è contrassegnato da un Peso, ovvero un valore numerico che sta ad indicare quanto esso sia conveniente o meno. Ne risulta ovvio come l'obiettivo finale sia quello di portare il messaggio a destinazione al costo minore e tramite il tragitto più veloce.</p>
+            <img src="IMG/pesato.png">
+            <div class="line"></div>
+            <p>Per sviluppare un programma facendo uso di grafo, i dati di quest'ultimo possono essere inseriti all'interno di due strutture dati differenti:</p>
+            <p><b>Matrice di Adiacenze</b>: Nodi ed Archi sono inseriti in una <b>Matrice</b>, in cui le colonne indicano i nodi di destinazione e le righe quelli di origine.</p>
+            <img src="IMG/matrice.png">
+            <p><b>Lista di Adiacenze</b>: I dati vengono inseriti all'interno di un <b>Array</b>. Ad ogni nodo vengono assegnati i suoi nodi adiacenti.</p>
+            <img src="IMG/listaadiacenza.png">
+            <div class="line"></div>
+
+            <h1>Alberi</h1>
+            <p>Gli Alberi sono <b>Grafi Orientati</b>, all'interno dei quali esiste una direzionalità solamente <b>Discendente</b>, questo porta ad una <b>Struttura Gerarchica</b>. In questa struttura dati, il primo vertice è detto <b>Radice</b> o Nodo Padre, mentre tutti gli altri Nodi Figli.</p>
+            <img src="IMG/albero.png">
+            <div class="line"></div>
+            <p>I Grafi sono per le tecniche di instradamento, il miglior metodo di rappresentazione, tramite di essi è possibile disegnare una Rete e svolgere numerose analisi, per decretare il miglior tragitto possibile per un pacchetto, in termini di costo, tempo ed efficacia.</p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

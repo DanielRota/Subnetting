@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Daniel Rota 4IC FLSM</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Menu</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="index.html">Introduzione</a>
+                </li>
+                <li>
+                    <a href="index2.html">Routing Statico</a>
+                </li>
+                <li>
+                    <a href="index3.html">Routing Dinamico</a>
+                </li>
+                <li>
+                    <a href="index4.html">Grafi e Alberi</a>
+                </li>
+                <li>
+                    <a href="index5.html">FLSM</a>
+                </li>
+                <li>
+                    <a href="index6.html">VLSM</a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Nascondi Menu</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="fonti.html">Citografia</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <h1>Fixed Lenght Subnet Mask</h1>
+            <p>Il FLSM è una tecnica di subnetting con Subnet Mask a lunghezza fissa per dividere una Rete in sottoreti più piccole, tutte della stessa grandezza.</p>
+            <p>Per illustrare il procedimento, partiamo con un esercizio, utilizzando l'indirizzo 172.31.0.0 di classe B, di cui ci viene assegnata una tabella (Composta di Reti ed Host).</p>
+            <div id="tabella"><div class="text-row"><div class="table-wrap"><table class="table info-table"><tbody>
+                <tr><td><span></span>
+                    <span>R0
+                    </span></td><td><span>R1
+                    </span></td><td><span>R2
+                    </span></td><tr>
+                        <span>
+                        </span></td><td><span>500
+                        </span></td><td><span>200
+                        </span></td><td><span>100
+                        </span></td>
+                    </tr>
+            </table></div></div></div></tbody>
+            <div class="line"></div>
+
+            <p>Essendo una tecnica a Maschera Fissa, è necessario venire a conoscenza del numero di indirizzi che intercorre fra una sottorete e l'altra.</p>
+            <p>Per far questo ci servono i Bit dedicati agli Host, i quali trovao tramite il <b>Logaritmo in base 2 di 3</b>, che è il numero di sottoreti da gestire. Il risultato è 1,5 circa, esso va sempre arrotondato per eccesso. Successivamente si esegue 2<sup>Bit Host</sup>, nel nostro caso 2<sup>2</sup>. Ogni Rete sarà distante quindi 4 Bit.</p>
+            <div id="tabella"><div class="text-row"><div class="table-wrap"><table class="table info-table"><tbody>
+                <tr><td><span></span>
+                    <span>R0
+                    </span></td><td><span>R1
+                    </span></td><td><span>R2
+                    </span></td><tr>
+                        <span>
+                        </span></td><td><span>172.31.0.0/30
+                        </span></td><td><span>172.31.4.0/30
+                        </span></td><td><span>172.8.0/30
+                        </span></td>
+                    </tr>
+            </table></div></div></div></tbody>            
+            <div class="line"></div>
+            <p>Fatto questo non rimane che trovare Default Gateway, Broadcast e Subnet Mask (Quest'ultima sarà sempre uguale trattandosi di una tecnica a Maschera Fissa).</p>
+            <div id="tabella"><div class="text-row"><div class="table-wrap"><table class="table info-table"><tbody>
+                <tr>
+                    <span>
+                    </span></td><td><span>
+                    </span></td>
+                    <span>
+                    </span></td><td><span>R0
+                    </span></td><td><span>R1
+                    </span></td><td><span>R2
+                    </span></td><td>
+                </tr><tr>
+                        <span>
+                        </span></td><td><span>Default Gateway
+                        </span></td>
+                        <span>
+                        </span></td><td><span>172.31.3.254
+                        </span></td><td><span>172.31.7.254
+                        </span></td><td><span>172.31.11.254
+                        </span></td<td>
+                    </tr>
+                    <tr>
+                        <span>
+                        </span></td><td><span>Broadcast
+                        </span></td><span>
+                        </span></td><td><span>172.31.3.255
+                        </span></td><td><span>172.31.7.255
+                        </span></td><td><span>172.31.11.255
+                        </span></td><td>
+                    </tr>
+                    <tr>
+                        <span>
+                        </span></td><td><span>Subnet Mask
+                        </span></td>
+                        <span>
+                        </span></td><td><span>255.255.255.252
+                        </span></td><td><span>255.255.255.252
+                        </span></td><td><span>255.255.255.252
+                        </span></td<td>
+                    </tr>
+            </table></div></div></div></tbody>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

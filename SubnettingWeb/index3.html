@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Daniel Rota 4IC Routing Dinamico</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Menu</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="index.html">Introduzione</a>
+                </li>
+                <li>
+                    <a href="index2.html">Routing Statico</a>
+                </li>
+                <li>
+                    <a href="index3.html">Routing Dinamico</a>
+                </li>
+                <li>
+                    <a href="index4.html">Grafi e Alberi</a>
+                </li>
+                <li>
+                    <a href="index5.html">FLSM</a>
+                </li>
+                <li>
+                    <a href="index6.html">VLSM</a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Nascondi Menu</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="fonti.html">Citografia</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <h1>Routing Dinamico</h1>
+            <p>Routing dinamico è una tecnica di routing superiore che altera le informazioni di routing in base alle mutevoli circostanze della rete esaminando i messaggi di aggiornamento del routing in arrivo. Quando si verifica il cambio di rete, invia un messaggio al router per specificare tale modifica, quindi i percorsi vengono ricalcolati e inviati come nuovo messaggio di aggiornamento del routing. Questi messaggi pervadono la rete, consentendo al router di modificare corrispondentemente le proprie tabelle di instradamento.</p>
+            <p>La tecnica utilizza protocolli di instradamento per diffondere conoscenze come RIP, OSPF, BGP, ecc. Diversamente dall'instradamento statico, non richiede l'aggiornamento manuale, invece è automatico e aggiorna periodicamente le informazioni della tabella di instradamento basandosi sulle condizioni della rete. A tal fine, sono necessarie risorse aggiuntive per la memorizzazione delle informazioni.</p>
+            <p>Routing dinamico o altrimenti chiamato come instradamento adattivo. Le decisioni di instradamento vengono modificate in questi algoritmi per rispecchiare le modifiche nella topologia o nel traffico.</p>
+            <div class="line"></div>
+            <p>Le rotte su cui viene eseguito l'instradamento dinamico sono note come rotte dinamiche in cui le informazioni rispondono ai cambiamenti nella rete in modo che vengano costantemente aggiornate. Tuttavia, c'è sempre un intervallo tra il periodo in cui una rete cambia e quando tutti i router vengono informati del cambiamento. Il router cerca di abbinare il cambio di rete e provoca un ritardo noto anche come tempo di convergenza. Il tempo di convergenza deve essere più breve. La rete più grande richiede il routing dinamico perché con il routing statico le reti più grandi non possono essere gestibili e comportano la perdita di connettività.</p>
+            <p>Il routing dinamico presenta tuttavia una serie di svantaggi:</p>
+            <ul> 
+                <li>La trasmissione e il multicast degli aggiornamenti di routing lo rendono meno sicuro;</li>
+                <li>Sono necessarie risorse aggiuntive come CPU, memoria e larghezza di banda del collegamento;</li>
+                <li>Inizialmente, potrebbe essere complicato da implementare.</li>            
+            </ul>
+            <div class="line"></div>
+
+            <p>Rispetto all'instradamento statico, quello dinamico è molto più efficace e semplice da gestire. Prendiamo come esempio questo schema, composto da due reti ed una rete di collegamento fra i due Router.</p>
+            <img src="IMG/schemadin.png">
+            <div class="line"></div>
+            <p>Usando l'Algoritmo RIP, non è quindi più necessario calcolare manualmente ogni rotta, è semplicemente necessario inserire nella sezione apposita (RIP) di entrambi i Router, gli indirizzi Network delle due reti comunicanti, e quello della rete di collegamento fra le due reti:</p>
+            <img src="IMG/riprouter.png">
+
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+</body>
+
+</html>
